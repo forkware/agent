@@ -1,14 +1,18 @@
 #!/usr/bin/env bash
 # Starts the app; the installer runs it right after cloning.
-# Until the app has a start command of its own, this opens an AI agent
-# that builds the app with you by the rules in forkware/manifesto.md.
+# Arguments go to the app: ./run.sh --server --port 8080
 set -euo pipefail
 cd "$(dirname "$0")"
 
-agent=${FORKWARE_AGENT:-claude}
-if ! command -v "$agent" >/dev/null 2>&1; then
-  echo "Install an AI coding agent to start building, for example Claude Code: https://claude.com/claude-code"
-  echo "Then run ./run.sh again. Another agent: FORKWARE_AGENT=<command> ./run.sh"
-  exit 0
+if ! command -v node >/dev/null 2>&1 || ! node -e 'const [a,b]=process.versions.node.split(".").map(Number); process.exit(a>22||(a===22&&b>=18)?0:1)'; then
+  echo "agent needs Node.js 22.18 or newer: https://nodejs.org"
+  exit 1
 fi
-exec "$agent" "Read forkware/manifesto.md. This repository is a Forkware app built by those rules. Ask me what the app should do, then build it with me. When the app can run, replace run.sh and run.cmd with its start command."
+
+# Install dependencies on the first run and whenever package-lock.json changes.
+stamp=node_modules/.package-lock.json
+if [ ! -f "$stamp" ] || [ package-lock.json -nt "$stamp" ]; then
+  npm install --no-audit --no-fund
+fi
+
+exec npm start --silent -- "$@"
