@@ -4,14 +4,14 @@ Rule 1 of the [manifesto](../forkware/manifesto.md): installing means forking. O
 
 ```sh
 # Linux
-curl -fsSL https://raw.githubusercontent.com/forkware/manifesto/main/installer/install-linux.sh | bash
+curl -fsSL https://raw.githubusercontent.com/forkware/agent/main/installer/install-linux.sh | bash
 # macOS
-curl -fsSL https://raw.githubusercontent.com/forkware/manifesto/main/installer/install-macos.sh | bash
+curl -fsSL https://raw.githubusercontent.com/forkware/agent/main/installer/install-macos.sh | bash
 ```
 
 ```powershell
 # Windows (PowerShell)
-irm https://raw.githubusercontent.com/forkware/manifesto/main/installer/install-windows.ps1 | iex
+irm https://raw.githubusercontent.com/forkware/agent/main/installer/install-windows.ps1 | iex
 ```
 
 ## What it does
@@ -24,11 +24,11 @@ irm https://raw.githubusercontent.com/forkware/manifesto/main/installer/install-
 
 | Variable | Default | |
 |---|---|---|
-| `FORKWARE_REPO` | `forkware/manifesto` | Repository to fork |
+| `FORKWARE_REPO` | `forkware/agent` | Repository to fork |
 | `FORKWARE_DIR` | `~/forkware` | Where the fork is cloned |
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/forkware/manifesto/main/installer/install-linux.sh | FORKWARE_REPO=owner/app bash
+curl -fsSL https://raw.githubusercontent.com/forkware/agent/main/installer/install-linux.sh | FORKWARE_REPO=owner/app bash
 ```
 
 ## Tests

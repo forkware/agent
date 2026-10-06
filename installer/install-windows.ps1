@@ -1,15 +1,15 @@
 # Forkware installer for Windows 10/11.
-# Usage (PowerShell): irm https://raw.githubusercontent.com/forkware/manifesto/main/installer/install-windows.ps1 | iex
+# Usage (PowerShell): irm https://raw.githubusercontent.com/forkware/agent/main/installer/install-windows.ps1 | iex
 #
 # Env:
-#   FORKWARE_REPO  upstream repository to fork (default: forkware/manifesto)
+#   FORKWARE_REPO  upstream repository to fork (default: forkware/agent)
 #   FORKWARE_DIR   where the fork is cloned   (default: ~\forkware)
 
 # Runs in its own scope so settings do not leak into the user's session under iex
 & {
   $ErrorActionPreference = 'Stop'
 
-  $Repo = if ($env:FORKWARE_REPO) { $env:FORKWARE_REPO } else { 'forkware/manifesto' }
+  $Repo = if ($env:FORKWARE_REPO) { $env:FORKWARE_REPO } else { 'forkware/agent' }
   $Dir  = if ($env:FORKWARE_DIR)  { $env:FORKWARE_DIR }  else { Join-Path $HOME 'forkware' }
 
   function Say($msg)  { Write-Host "==> $msg" -ForegroundColor Green }

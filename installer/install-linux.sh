@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 # Forkware installer for Linux.
-# Usage: curl -fsSL https://raw.githubusercontent.com/forkware/manifesto/main/installer/install-linux.sh | bash
+# Usage: curl -fsSL https://raw.githubusercontent.com/forkware/agent/main/installer/install-linux.sh | bash
 #
 # Env:
-#   FORKWARE_REPO  upstream repository to fork (default: forkware/manifesto)
+#   FORKWARE_REPO  upstream repository to fork (default: forkware/agent)
 #   FORKWARE_DIR   where the fork is cloned   (default: ~/forkware)
 set -euo pipefail
 
-REPO="${FORKWARE_REPO:-forkware/manifesto}"
+REPO="${FORKWARE_REPO:-forkware/agent}"
 DIR="${FORKWARE_DIR:-$HOME/forkware}"
 BIN="$HOME/.local/bin"
 
